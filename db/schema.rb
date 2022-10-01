@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
+cre# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_064346) do
+ActiveRecord::Schema.define(version: 2022_10_01_123451) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 2022_09_28_064346) do
     t.integer "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -119,8 +121,12 @@ ActiveRecord::Schema.define(version: 2022_09_28_064346) do
     t.integer "is_active", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "genres"
+  add_foreign_key "orders", "customers"
 end

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1>注文履歴詳細</h1>
+    <% form_with url: admin_order_path,model: @order do |f| %>
+    <div class="form-group">
+      <%= f.label :"購入者" %>
+      <%= f.customer.full_name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"注文日" %>
+      <%= f.created_at %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"配送先" %>
+      <p>〒</p><%= f.postal_code  %><p> </p><%= f.address %></br><%= f.name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"支払方法" %>
+      <%= f.payment_method %>
+    </div>
+    <div class="form-group">
+      <%= f.label :"注文ステータス" %>
+      <%= f.select :is_active,[["入金待ち",0],["入金確認",1],["製作中",2],["発送準備中",3],["発送済み",4]],{selected: 0} %>
+      <%= f.submit "更新",class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>

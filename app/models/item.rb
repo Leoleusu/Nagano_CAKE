@@ -1,5 +1,13 @@
 class Item < ApplicationRecord
-  has_one_atacched :image
+  has_one_attached :image
+
+  belongs_to :genre
+
+  #active=販売中、stop=販売停止中
+  enum is_active: {
+    active: 1,
+    stop: 2
+  }
 
   def get_image(width,height)
      unless image.attached?

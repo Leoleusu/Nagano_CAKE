@@ -1,0 +1,11 @@
+ja:
+  enums:
+    item:
+      is_active:
+        active: "販売中"
+        stop: "販売停止中"
+        
+   # customer:
+      #is_deleted:
+        #enrolled: "有効"
+        #delete: "退会"

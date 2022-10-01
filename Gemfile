@@ -62,3 +62,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'image_processing', '~> 1.2'
 
 gem "net-smtp"
+
+gem 'enum_help'

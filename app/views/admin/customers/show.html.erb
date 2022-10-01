@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="low">
+    <% @customer.each do |c| %>
+    <h1><%= c.full_name %>さんの会員詳細</h1>
+    <div class="form-group">
+      <p>会員ID            </p><%= c.id %>
+    </div>
+    <div class="form-group">
+      <p>氏名              </p><%= c.full_name %>
+    </div>
+    <div class="form-group">
+      <p>フリガナ          </p><%= c.full_name_kana %>
+    </div>
+    <div class="form-group">
+      <p>郵便番号          </p><%= c.email %>
+    </div>
+    <div class="form-group">
+      <p>住所              </p><%= c.address %>
+    </div>
+    <div class="form-group">
+      <p>電話番号          </p><%= c.telephone_number %>
+    </div>
+    <div class="form-group">
+      <p>メールアドレス    </p><%= c.email %>
+    </div>
+    <div class="form-group">
+      <p>会員ステータス    </p><%= c.is_deleted %>
+    </div>
+    <div class="form-group">
+      <%= link_to "編集する",edit_admin_customer_path(customer.id),class: "btn btn-success" %>
+      <%= link_to "注文履歴一覧を見る",root_path,class: "btn btn-info" %>
+    </div>
+
