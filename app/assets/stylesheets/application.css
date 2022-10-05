@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+ /*footer{*/
+ /*  margin-top: auto;*/
+ /*}*/
+
+ /*footer .box{*/
+ /*   height: 60px;*/
+ /*   width: 100%;*/
+ /*   background-color: brack;*/
+ /*  margin-top: auto;*/
+ /*}*/
+ .top-box{
+  position: relative;
+ }
+
+ .top-text{
+  position: absolute;
+  bottom: 50%;
+  left: 25%;
+ }
+ 
+/* .card-img-overlay{*/
+/*  padding: 0;*/
+/*  top: calc(50% - 0.5rem);*/
+/*  text-align: center;*/
+/*  background-color: white;*/
+/*}*/

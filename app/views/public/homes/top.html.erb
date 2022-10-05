@@ -1,7 +1,22 @@
-<h1>Topページです</h1>
-<%= link_to "管理者ログイン",new_admin_session_path %>
-<%= link_to "ジャンル一覧",admin_genres_path %>
-<%= link_to "商品追加",new_admin_item_path %>
-<%= link_to "商品一覧",admin_items_path %>
-<%= link_to "会員一覧",admin_customers_path %>
-<%= link_to "管理者トップページ",admin_root_path %>
+<div class="container">
+    <div class="row">
+        <div class="top-box mx-auto">
+            <img src="assets/top",class="card-img">
+            <div class="card col-6 col-offset-4 top-text py-3">
+                <p class="card-text">ようこそ、ながのCAKEへ！</p>
+                <p class="card-text">このサイトは、ケーキ販売のECサイトになります。</p>
+                <p class="card-text">会員でない方も商品の閲覧はできますが、</p>
+                <p class="card-text">購入には会員登録が必要になります。</p>
+            </div>
+        </div>
+    </div>
+    <h1>新着商品</h1>
+    <div class="row">
+        <table class="table">
+            <!--%= @items.each do |i| %-->
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
