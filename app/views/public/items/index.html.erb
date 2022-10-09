@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h1>商品一覧</h1>
+  </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <%= link_to item_path(item),class: "card col-3 p-3" do %>
+        <%= image_tag item.image.get_image(50,50),class: "card-img-top" %>
+        <%= item.name,class: "card-text" %>
+        <%= item.price,class: "card-text" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

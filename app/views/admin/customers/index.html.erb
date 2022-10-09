@@ -15,7 +15,7 @@
       <td><%= customer.id %></td>
       <td><%= link_to customer.full_name,admin_customer_path(customer) %></td>
       <td><%= customer.email %></td>
-      <td><%= customer.is_deleted_i18n %></td>
+      <td><%= customer.is_deleted ? '退会' : '有効'  %></td>
     </tr>
     <% end %>
   </tbody>

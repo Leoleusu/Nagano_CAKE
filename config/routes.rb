@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'items/index'
+    get 'items/show'
+  end
   #顧客用
   devise_for :customers,skip: [:passwords],controllers:{
     registrations: "public/registrations",
@@ -18,6 +22,12 @@ Rails.application.routes.draw do
   patch 'customers/information' => 'public/customers#edit',as: :update_customer
   get'customers/unsubscribe' => 'public/customers#subscribe',as: :subscribe_customer
   patch 'customers/withdrawal' => 'public/customer#withdrawal',as: :withdrawal_customer
+  
+  scope module: :public do
+    resources :addresses,only: [:index,:edit,:create,:update,:destroy]
+    resources :items,only: [:index,:show]
+  end
+  
   namespace :admin do
     resources :genres,only: [:index,:edit,:create,:update]
     resources :items,only: [:index,:edit,:new,:create,:update]
@@ -25,4 +35,5 @@ Rails.application.routes.draw do
     resources :customers
     root to:'homes#top'
   end
+  
 end

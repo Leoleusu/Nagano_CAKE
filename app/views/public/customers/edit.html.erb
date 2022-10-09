@@ -3,7 +3,7 @@
     <h2>会員情報編集</h2>
   </div>
     <div class="row">
-    <%= form_with url: update_customer_path,model: @customer,method: :update do |f| %>
+    <%= form_with url: update_customer_path,model: @customer do |f| %>
       <%= render "public/shared/error_messages", resource: @customer %>
       <div class="form-field">
         <%= f.label :"名前",class: "mr-5" %>
@@ -35,7 +35,7 @@
         <%= f.submit "編集内容を保存",class: "btn btn-success" %>
       </div>
       <div class="action">
-        <%= link_to "退会する",subscribe_customer_path,class: "btn btn-alarm" %>
+        <%= link_to "退会する",subscribe_customer_path,class: "btn btn-danger" %>
       </div>
     <% end %>
   </div>

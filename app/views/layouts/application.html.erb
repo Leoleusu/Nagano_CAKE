@@ -27,13 +27,13 @@
                   <%= link_to "マイページ",customer_path(current_customer),class: "btn" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "商品一覧",admin_items_path,class: "btn" %>
+                  <%= link_to "商品一覧",items_path,class: "btn" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "カート",about_path,class: "btn" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト",destroy_customer_session_path,class: "nav-link ",method: :delete %>
+                  <%= link_to "ログアウト",destroy_customer_session_path,class: "btn ",method: :delete %>
                 </li>
                 <% else %>
                 <li class="nav-item">
@@ -63,7 +63,7 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="container-fiuid">
+      <div class="container-fiuid pt-5">
         <div class="row bg-dark">
           <div class="py-4 w-100%"></div>
         </div>
