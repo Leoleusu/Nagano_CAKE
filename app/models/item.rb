@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   has_one_attached :image
 
+  has_many :cart_items
+  
   belongs_to :genre
 
   #active=販売中、stop=販売停止中
@@ -16,7 +18,7 @@ class Item < ApplicationRecord
      end
      image.variant(resize_to_limit:[width,height]).processed
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end

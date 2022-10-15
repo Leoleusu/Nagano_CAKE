@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <h2>ショッピングカート</h2> <%= link_to "カートを空にする",destroy_all_cart_items_path,class: "btn btn-danger" %>
+    <h2>ショッピングカート</h2> <%= link_to "カートを空にする",cart_items_destroy_all_path,method: :delete,class: "btn btn-danger" %>
   </div>
-  <div class="row">
+  <div class="row pe-5">
     <table class="table">
       <thead>
         <tr>
@@ -14,32 +14,30 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart_items.each |ci| do %>
+        <% @total = 0 %>
+        <% @cart_items.each do |ci| %>
         <tr>
-          <td> <%= image_tag ci.image.get_image(20,20) %> <%= ci.name %> </td>
+          <td> <%= image_tag ci.item.get_image(50,50) %> <%= ci.item.name %> </td>
           <td> <%= ci.item.with_tax_price %></td>
           <td> <%= ci.amount %></td>
-          <td> <%= (ci.item.with_tax_price * ci.amount %></td>
-          <td> <%= link_to "削除する",destroy_cart_items_path,class: "btn btn-danger" %></td>
+          <td> <%= (ci.item.with_tax_price * ci.amount) %></td>
+          <td> <%= link_to "削除する",cart_items_path,metohd: :delete,class: "btn btn-danger" %></td>
+          <% @total += ci.subtotal %>
         </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <%= link_to "買い物を続ける",items_path,class: "btn btn-primary" %>
-    <table class="table">
+  <div class="row p-5">
+    <%= link_to "買い物を続ける",items_path,class: "btn btn-primary text-center" %>
+    <table class="table col-6 offset-md-3">
       <tr>
-        <thead>
           <th>合計金額</th>
-        </thead>
-        <tbody>
-          <%= ci.subtotal %>
-        </tbody>
-        <% end %>
+          <td><%= @total %></td>
       </tr>
     </table>
   </div>
-  <div class="row">
+  <div class="row text-center">
     <%= link_to "情報入力に進む",about_path,class: "btn btn-success text-center" %>
   </div>
 </div>

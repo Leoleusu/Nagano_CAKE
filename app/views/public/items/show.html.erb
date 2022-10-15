@@ -9,9 +9,10 @@
           <p class="d-flex align-items-end">(税込)</p>
         </div>
         <div class="row offset-md-1">
-          <%= form_with url: cart_items_path,model: @cart_item do |f| %>
+          <%= form_with model: @cart_item,url: cart_items_path do |f| %>
+            <!--%= f.hidden_field :customer_id,:varue => current_customer.id %-->
             <%= f.hidden_field :item_id,:value => @item.id %>
-            <%= f.select :amount, *[1..10] %>
+            <%= f.select :amount,*[1..10] %>
             <%= f.submit "カートに入れる",class: "btn btn-success" %>
           <% end %>
         </div>
