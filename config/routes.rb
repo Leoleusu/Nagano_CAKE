@@ -22,17 +22,17 @@ Rails.application.routes.draw do
   patch 'customers/information' => 'public/customers#edit',as: :update_customer
   get'customers/unsubscribe' => 'public/customers#subscribe',as: :subscribe_customer
   patch 'customers/withdrawal' => 'public/customer#withdrawal',as: :withdrawal_customer
-  delete'cart_items/destroy_all' => 'public/cart_items#index'
+  delete'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   get 'orders/end' => 'public/orders#end'
   post'orders/confirm' => 'public/orders#confirm'
-  
+
   scope module: :public do
     resources :addresses,only: [:index,:edit,:create,:update,:destroy]
     resources :items,only: [:index,:show]
     resources :cart_items,only: [:index,:update,:destroy,:create]
     resources :orders,only: [:new,:index,:show,:create]
   end
-  
+
   namespace :admin do
     resources :genres,only: [:index,:edit,:create,:update]
     resources :items,only: [:index,:edit,:new,:create,:update]
@@ -40,5 +40,5 @@ Rails.application.routes.draw do
     resources :customers
     root to:'homes#top'
   end
-  
+
 end
