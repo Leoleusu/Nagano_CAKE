@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
   
   def new
+    @order = Order.new
+    @addresses = Address.all
+    
   end
   
   def index
@@ -20,6 +23,7 @@ class Public::OrdersController < ApplicationController
   
   private
   
-  
+  def order_params
+    params.require(:order).permit(:)
   
 end
