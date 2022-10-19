@@ -4,6 +4,10 @@ ja:
       is_active:
         active: "販売中"
         stop: "販売停止中"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfar: "銀行振込"
   activerecord:
     errors:
       messages:
