@@ -2,7 +2,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   has_many :cart_items
-  
+  has_many :orders
+
   belongs_to :genre
 
   #active=販売中、stop=販売停止中

@@ -8,6 +8,12 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfar: "銀行振込"
+      is_active:
+        wait: "待機中"
+        confirmation: "入金確認"
+        production: "製作中"
+        preparation: "発送準備中"
+        sent: "発送済み"
   activerecord:
     errors:
       messages:

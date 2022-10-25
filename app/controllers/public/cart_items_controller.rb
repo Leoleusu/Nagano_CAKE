@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.find(params[:item_id])
+    @cart_item = current_customer.cart_items.find(params[:item_id])
     if @cart_item.update(cart_item_params)
       redirect_to cart_items_path
     else
@@ -14,16 +14,16 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
+    cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
     render 'public/cart_items/index'
   end
 
   def destroy_all
-    cart_items = CartItem.all
+    cart_items = current_customer.cart_items.all
     cart_items.destroy_all
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     render 'public/cart_items/index'
   end
 
@@ -33,7 +33,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to cart_items_path
     else
-      @cart_items = CartItem.all
+      @cart_items = current_customer.cart_items.all
       render 'public/cart_items/index'
       @cart_item = CartItem.new(cart_item_params)
     end

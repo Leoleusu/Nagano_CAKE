@@ -8,13 +8,14 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.postage = 800
     @cart_items = current_customer.cart_items.all
-    if params [:order][:address_num] == "0"
+    if params[:order][:address_num] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.name
-    elsif params [:order][:address_num] == "1"
-      sel = Address.find(params[:order][:customer_id])
+      @order.name = current_customer.full_name
+    elsif params[:order][:address_num] == "1"
+      sel = Address.find(params[:order][:address_id])
       @order.postal_code = sel.postal_code
       @order.address = sel.address
       @order.name = sel.name
@@ -28,12 +29,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save
+      cart_items = current_customer.cart_items.all
+      cart_items.destroy_all
+      redirect_to orders_end_path
+    else
+      @order = Order.new(order_params)
+      render 'public/orders/confirm'
+    end
   end
 
   def end
