@@ -1,10 +1,11 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
-  belongs_to :item
+
+  has_many :order_details
 
   #credit_card:クレジットカード,transfer:銀行振込
-  enum purchase_price: {
+  enum payment_method: {
     credit_card: 0,
     transfer: 1
   }

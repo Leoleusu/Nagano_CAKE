@@ -4,7 +4,7 @@
     <%= form_with model: @order,url: orders_confirm_path,method: :post do |f| %>
     <div class="form-group">
       <h3>支払方法</h3>
-      <%= f.radio_button :payment_method, 'credit_card' %>
+      <%= f.radio_button :payment_method, 'credit_card', :checked => true %>
       <%= f.label :"クレジットカード" %>
       <%= f.radio_button :payment_method, 'transfar' %>
       <%= f.label :"銀行振込" %>
@@ -12,7 +12,7 @@
     <div class="form-group">
       <h3>お届け先</h3>
       <div class="row">
-        <%= f.radio_button :address_num, 0 %>
+        <%= f.radio_button :address_num, 0, :checked => true %>
         <%= f.label :"ご自身の住所" %>
         <%= current_customer.customer_address %>
       </div>

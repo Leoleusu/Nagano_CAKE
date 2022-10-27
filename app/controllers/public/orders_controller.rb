@@ -30,9 +30,12 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
+    
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.all
   end
 
   def create
@@ -40,11 +43,18 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     if @order.save
       cart_items = current_customer.cart_items.all
+      cart_items.each do |c|
+        order_detail = OrderDetail.new
+        order_detail.item_id = c.item_id
+        order_detail.order_id = @order.id
+        order_detail.purchase_price = c.item.price
+        order_detail.amount = c.amount
+        order_detail.save
+      end
       cart_items.destroy_all
       redirect_to orders_end_path
     else
-      @order = Order.new(order_params)
-      render 'public/orders/confirm'
+      render 'public/orders/new'
     end
   end
 

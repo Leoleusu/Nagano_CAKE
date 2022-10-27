@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
 
   private
 
-  def order_paramsx
+  def order_params
     params.require(:order).permit(:postal_code,:address,:name,:postage,:payment,:payment_method,:is_active,:customer_id)
   end
 end

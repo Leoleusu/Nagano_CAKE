@@ -19,7 +19,7 @@
         <tr>
           <td><%= o.created_at %></td>
           <td><%= o.address %></td>
-          <td><%= o.name %></td>
+          <td><%= o.order_detail.item.name %></td>
           <td><%= o.payment %></td>
           <td><%= o.is_active_i18n %></td>
           <td><%= link_to "表示する",about_path,class: "btn btn-primary" %></td>
