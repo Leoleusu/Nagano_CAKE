@@ -12,10 +12,14 @@
       </thead>
       <tbody>
         <% @orders.each do |o| %>
-        <tr>
-          <td><%= link_to o.created_at,admin_order_path %></td>
-          <td><%= o.customer.name %></td>
-          <td></td>
+        <tr class="moves-contents" onclick='window.location="/admin/orders/<%= o.id %>"' role="link">
+          <td><%= o.created_at %></td>
+          <td><%= o.customer.full_name %></td>
+          <% total_amount = 0 %>
+          <% o.order_details.each do |od| %>
+            <% total_amount += od.amount %>
+          <% end %>
+            <td><%= total_amount %></td>
           <td><%= o.is_active_i18n %></td>
         </tr>
         <% end %>

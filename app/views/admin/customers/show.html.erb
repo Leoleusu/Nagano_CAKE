@@ -1,33 +1,32 @@
 <div class="container">
   <div class="low">
-    <% @customer.each do |c| %>
-    <h1><%= c.full_name %>さんの会員詳細</h1>
+    <h1><%= @customer.full_name %>さんの会員詳細</h1>
     <div class="form-group">
-      <p>会員ID            </p><%= c.id %>
+      <p>会員ID            <%= @customer.id %></p>
     </div>
     <div class="form-group">
-      <p>氏名              </p><%= c.full_name %>
+      <p>氏名              <%= @customer.full_name %></p>
     </div>
     <div class="form-group">
-      <p>フリガナ          </p><%= c.full_name_kana %>
+      <p>フリガナ          <%= @customer.full_name_kana %></p>
     </div>
     <div class="form-group">
-      <p>郵便番号          </p><%= c.email %>
+      <p>郵便番号          <%= @customer.email %></p>
     </div>
     <div class="form-group">
-      <p>住所              </p><%= c.address %>
+      <p>住所              <%= @customer.address %></p>
     </div>
     <div class="form-group">
-      <p>電話番号          </p><%= c.telephone_number %>
+      <p>電話番号          <%= @customer.telephone_number %></p>
     </div>
     <div class="form-group">
-      <p>メールアドレス    </p><%= c.email %>
+      <p>メールアドレス    <%= @customer.email %></p>
     </div>
     <div class="form-group">
-      <p>会員ステータス    </p><%= c.is_deleted %>
+      <p>会員ステータス    <%= @customer.is_deleted ? '退会' : '有効' %></p>
     </div>
     <div class="form-group">
-      <%= link_to "編集する",edit_admin_customer_path(customer.id),class: "btn btn-success" %>
+      <%= link_to "編集する",edit_admin_customer_path(@customer.id),class: "btn btn-success" %>
       <%= link_to "注文履歴一覧を見る",root_path,class: "btn btn-info" %>
     </div>
 

@@ -9,11 +9,17 @@ ja:
         credit_card: "クレジットカード"
         transfar: "銀行振込"
       is_active:
-        wait: "待機中"
+        wait: "入金待ち"
         confirmation: "入金確認"
         production: "製作中"
         preparation: "発送準備中"
         sent: "発送済み"
+    order_detail:
+      is_active:
+        impossible: "製作不可"
+        wait: "製作待ち"
+        production: "製作中"
+        finished: "製作完了"
   activerecord:
     errors:
       messages:
