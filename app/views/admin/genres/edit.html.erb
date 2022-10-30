@@ -1,9 +1,13 @@
-<h2>ジャンル編集</h2>
-<%= render 'devise/shared/error_messages',resource: @genre %>
-<%= form_with url: admin_genre_path,model: @genre do |f| %>
-<div class = "form-group">
-  <%= f.label :ジャンル名 %>
-  <%= f.text_field :name,autofocus: true,autocomplete: "name" %>
-  <%= f.submit "変更を保存",class: "btn btn-success" %>
+<div class="container">
+  <h2>ジャンル編集</h2>
+  <div class="row">
+    <%= render 'devise/shared/error_messages',resource: @genre %>
+    <%= form_with url: admin_genre_path,model: @genre do |f| %>
+    <div class = "form-group">
+    <%= f.label :ジャンル名 %>
+    <%= f.text_field :name,autofocus: true,autocomplete: "name" %>
+    <%= f.submit "変更を保存",class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
 </div>
-<% end %>

@@ -12,11 +12,11 @@
     </div>
     <h1>新着商品</h1>
     <div class="row">
-        <table class="table">
-            <!--%= @items.each do |i| %-->
-            <tr>
-                <td></td>
-            </tr>
-        </table>
+            <% @items.first(4).each do |i| %>
+            <div class="item-box p-4">
+                <%= link_to image_tag(i.get_image(200,200)),item_path(i.id) %><br/>
+                <%= link_to i.name,item_path(i.id) %>
+            </div>
+            <% end %>
     </div>
 </div>

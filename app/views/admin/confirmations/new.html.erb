@@ -1,6 +1,9 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container">
+  <h2>Resend confirmation instructions</h2>
+  <div class="row">
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -14,3 +17,5 @@
 <% end %>
 
 <%= render "admins/shared/links" %>
+  </div>
+</div>
