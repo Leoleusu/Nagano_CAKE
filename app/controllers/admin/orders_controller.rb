@@ -7,8 +7,10 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
+      flash[:notice] = "更新しました。"
       redirect_to admin_root_path
     else
+      flash[:error] = "更新に失敗しました。"
       render admin_order_path(@order.id)
     end
   end

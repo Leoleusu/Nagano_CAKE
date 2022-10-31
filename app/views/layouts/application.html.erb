@@ -61,6 +61,12 @@
         </div>
       </div>
     </header>
+    <div class="text-success text-center">
+      <%= flash[:notice] %>
+    </div>
+    <div class="text-danger text-center">
+      <%= flash[:error] %>
+    </div>
     <%= yield %>
     <footer>
       <div class="container-fiuid pt-5">

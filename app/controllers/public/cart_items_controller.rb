@@ -7,8 +7,10 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = current_customer.cart_items.find(params[:item_id])
     if @cart_item.update(cart_item_params)
+      flash[:notice] = "商品情報を更新しました。"
       redirect_to cart_items_path
     else
+      flash[:error] = "商品情報の更新に失敗しました。"
       render 'public/cart_items/index'
     end
   end
@@ -17,6 +19,7 @@ class Public::CartItemsController < ApplicationController
     cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
+    flash[:notice] = "商品を取り消しました。"
     render 'public/cart_items/index'
   end
 
@@ -24,6 +27,7 @@ class Public::CartItemsController < ApplicationController
     cart_items = current_customer.cart_items.all
     cart_items.destroy_all
     @cart_items = current_customer.cart_items.all
+    flash[:notice] = "全商品を取り消しました。"
     render 'public/cart_items/index'
   end
 
