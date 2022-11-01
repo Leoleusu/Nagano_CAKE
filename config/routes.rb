@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get'customers/information/edit' => 'public/customers#edit',as: :edit_customer
   patch 'customers/information' => 'public/customers#edit',as: :update_customer
   get'customers/unsubscribe' => 'public/customers#subscribe',as: :subscribe_customer
-  patch 'customers/withdrawal' => 'public/customer#withdrawal',as: :withdrawal_customer
+  patch 'customers/withdrawal' => 'public/customers#withdrawal',as: :withdrawal_customer
   delete'cart_items/destroy_all' => 'public/cart_items#destroy_all'
   get 'orders/end' => 'public/orders#end'
   post'orders/confirm' => 'public/orders#confirm'

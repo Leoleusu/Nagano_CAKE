@@ -12,11 +12,13 @@
     </div>
     <h1>新着商品</h1>
     <div class="row">
-            <% @items.first(4).each do |i| %>
-            <div class="item-box p-4">
-                <%= link_to image_tag(i.get_image(200,200)),item_path(i.id) %><br/>
-                <%= link_to i.name,item_path(i.id) %>
-            </div>
+            <% @items.first(5).each do |i| %>
+                <%= link_to item_path(i),class: "card col-2 p-3 m-3" do %>
+                    <%= image_tag i.get_image(200,200),class: "card-img-top" %>
+                    <div class="card-text text-secondary">
+                        <p><%= i.name %></p>
+                    </div>
+                <% end %>
             <% end %>
     </div>
 </div>

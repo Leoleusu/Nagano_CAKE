@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
+  before_action :move_to_signed_in
+
   def index
     @cart_items = current_customer.cart_items.all
   end
@@ -10,7 +12,7 @@ class Public::CartItemsController < ApplicationController
       flash[:notice] = "商品情報を更新しました。"
       redirect_to cart_items_path
     else
-      flash[:error] = "商品情報の更新に失敗しました。"
+      flash.now[:error] = "商品情報の更新に失敗しました。"
       render 'public/cart_items/index'
     end
   end
@@ -19,7 +21,7 @@ class Public::CartItemsController < ApplicationController
     cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
-    flash[:notice] = "商品を取り消しました。"
+    flash.now[:notice] = "カート内の商品を削除しました。"
     render 'public/cart_items/index'
   end
 
@@ -27,7 +29,7 @@ class Public::CartItemsController < ApplicationController
     cart_items = current_customer.cart_items.all
     cart_items.destroy_all
     @cart_items = current_customer.cart_items.all
-    flash[:notice] = "全商品を取り消しました。"
+    flash.now[:notice] = "カート内の全商品を削除しました。"
     render 'public/cart_items/index'
   end
 
@@ -43,9 +45,11 @@ class Public::CartItemsController < ApplicationController
       end
     end
     if @cart_item.save
+      flash[:notice] = "商品を追加しました。"
       redirect_to cart_items_path
     else
       @cart_items = current_customer.cart_items.all
+      flash.now[:error] = "商品の追加に失敗しました。"
       render 'public/cart_items/index'
       @cart_item = CartItem.new(cart_item_params)
     end
@@ -55,6 +59,14 @@ class Public::CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id,:amount)
+  end
+
+
+  def move_to_signed_in
+    unless customer_signed_in?
+      #サインインしていないユーザーはログインページが表示される
+      redirect_to  '/customers/sign_in'
+    end
   end
 
 end
