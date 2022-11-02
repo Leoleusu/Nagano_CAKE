@@ -1,9 +1,11 @@
 <div class="container">
-  <h1><span>商品一覧</span></h1>
-  <div class="text-right">
-    <%= link_to new_admin_item_path,class: "btn btn-brock" do %>
-      <i class="fa-solid fa-circle-plus"></i>
-    <% end %>
+  <div class="row">
+    <h1><span>商品一覧</span></h1>
+    <div class="text-right">
+      <%= link_to new_admin_item_path do %>
+        <i class="fas fa-solid fa-plus fa-3x"></i>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <table class="table">
