@@ -13,7 +13,7 @@
       <tbody>
         <% @orders.each do |o| %>
         <tr class="moves-contents" onclick='window.location="/admin/orders/<%= o.id %>"' role="link">
-          <td><%= o.created_at.strftime("%Y/%m/%d %H:%M:%S"),class: "text-decoration-underline" %></td>
+          <td><%= o.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= o.customer.full_name %></td>
           <% total_amount = 0 %>
           <% o.order_details.each do |od| %>

@@ -64,3 +64,5 @@ gem 'image_processing', '~> 1.2'
 gem "net-smtp"
 
 gem 'enum_help'
+
+gem 'rails-i18n'

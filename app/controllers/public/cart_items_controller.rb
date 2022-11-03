@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item = current_customer.cart_items.find(params[:id])
     cart_item.destroy
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     flash.now[:notice] = "カート内の商品を削除しました。"
     render 'public/cart_items/index'
   end

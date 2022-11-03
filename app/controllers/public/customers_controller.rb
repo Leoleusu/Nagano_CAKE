@@ -1,5 +1,4 @@
 class Public::CustomersController < ApplicationController
-
   def show
     @customer = current_customer
   end
@@ -10,10 +9,14 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
+    @customer.is_deleted = false
     if @customer.update(customer_params)
+      binding.pry
+      flash[:notice] = "情報を更新しました。"
       redirect_to customer_path
     else
-      render edit_customer_path
+      flash.now[:error] = "情報の更新に失敗しました。"
+      render "public/customers/edit"
     end
   end
 
@@ -32,7 +35,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:email,:last_name,:last_name_kana,:first_name,:first_name_kana,:postal_code,:address,:telephone_number,:is_deleted)
+    params.require(:customer).permit(:email,:last_name,:last_name_kana,:first_name,:first_name_kana,:postal_code,:address,:telephone_number)
   end
 
 end

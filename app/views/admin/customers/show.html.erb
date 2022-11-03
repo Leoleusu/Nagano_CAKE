@@ -1,32 +1,32 @@
 <div class="container">
   <div class="low">
     <h1><%= @customer.full_name %>さんの会員詳細</h1>
-    <div class="form-group">
-      <p>会員ID            <%= @customer.id %></p>
+    <div class="form-inline">
+      <p class="col-3">会員ID</p><%= @customer.id %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">氏名</p><%= @customer.full_name %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">フリガナ</p><%= @customer.full_name_kana %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">郵便番号</p><%= @customer.email %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">住所</p><%= @customer.address %>
+    </div>
+    <div class="form-inline">
+      <p class=col-3>電話番号</p><%= @customer.telephone_number %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">メールアドレス</p><%= @customer.email %>
+    </div>
+    <div class="form-inline">
+      <p class="col-3">会員ステータス</p><%= @customer.is_deleted ? '退会' : '有効' %>
     </div>
     <div class="form-group">
-      <p>氏名              <%= @customer.full_name %></p>
-    </div>
-    <div class="form-group">
-      <p>フリガナ          <%= @customer.full_name_kana %></p>
-    </div>
-    <div class="form-group">
-      <p>郵便番号          <%= @customer.email %></p>
-    </div>
-    <div class="form-group">
-      <p>住所              <%= @customer.address %></p>
-    </div>
-    <div class="form-group">
-      <p>電話番号          <%= @customer.telephone_number %></p>
-    </div>
-    <div class="form-group">
-      <p>メールアドレス    <%= @customer.email %></p>
-    </div>
-    <div class="form-group">
-      <p>会員ステータス    <%= @customer.is_deleted ? '退会' : '有効' %></p>
-    </div>
-    <div class="form-group">
-      <%= link_to "編集する",edit_admin_customer_path(@customer.id),class: "btn btn-success" %>
-      <%= link_to "注文履歴一覧を見る",root_path,class: "btn btn-primary" %>
+      <%= link_to "編集する",edit_admin_customer_path(@customer.id),class: "btn btn-success offset-md-1" %>
+      <%= link_to "注文履歴一覧を見る",root_path,class: "btn btn-primary ml-3" %>
     </div>
 
