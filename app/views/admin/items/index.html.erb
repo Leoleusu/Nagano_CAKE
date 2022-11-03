@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <h1><span>商品一覧</span></h1>
-    <div class="text-right">
-      <%= link_to new_admin_item_path do %>
-        <i class="fas fa-solid fa-plus fa-3x"></i>
+    <div class="offset-md-8">
+      <%= link_to new_admin_item_path,local: true,class: "btn btn-outline" do %>
+        <i class="fas fa-solid fa-plus fa-2x"></i>
       <% end %>
     </div>
   </div>
@@ -22,10 +22,16 @@
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= link_to item.name, edit_admin_item_path(item) %> </td>
+          <td><%= link_to item.name, admin_item_path(item) %> </td>
           <td><%= item.price %></td>
           <td><%= item.genre.name %></td>
-          <td><%= item.is_active_i18n %></td>
+          <td><% if item.is_active == "active" %>
+                <div class="text-success">
+                  <%= item.is_active_i18n %>
+                </div>
+              <% else %>
+                  <%= item.is_active_i18n %>
+              <% end %></td>
         </tr>
         <% end %>
         <%= paginate @items %>
