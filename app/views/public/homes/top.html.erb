@@ -17,8 +17,10 @@
                     <%= image_tag i.get_image(200,200),class: "card-img-top" %>
                     <div class="card-text text-secondary">
                         <p><%= i.name %></p>
+                        <p><%= i.with_tax_price %></p>
                     </div>
                 <% end %>
             <% end %>
+            <%= link_to "全ての商品はこちら >",items_path,class: "offset-md-10" %>
     </div>
 </div>
