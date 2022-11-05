@@ -4,6 +4,10 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
 
+  # def after_sign_in_path_for(resource)
+  #   customer_path(current_customer)
+  # end
+
   # GET /resource/sign_in
   # def new
   #   super

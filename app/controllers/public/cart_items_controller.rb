@@ -7,9 +7,10 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = current_customer.cart_items.find(params[:item_id])
+    @cart_item = current_customer.cart_items.find(params[:id])
     if @cart_item.update(cart_item_params)
       flash[:notice] = "商品情報を更新しました。"
+      @cart_items = current_customer.cart_items.all
       redirect_to cart_items_path
     else
       flash.now[:error] = "商品情報の更新に失敗しました。"
@@ -42,6 +43,9 @@ class Public::CartItemsController < ApplicationController
         new_amount = ci.amount + @cart_item.amount
         ci.update_attribute(:amount, new_amount)
         @cart_item.delete
+        flash[:notice] = "商品個数を追加しました。"
+        redirect_to cart_items_path
+        return
       end
     end
     if @cart_item.save

@@ -11,7 +11,6 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.is_deleted = false
     if @customer.update(customer_params)
-      binding.pry
       flash[:notice] = "情報を更新しました。"
       redirect_to customer_path
     else

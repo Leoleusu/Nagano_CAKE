@@ -56,9 +56,9 @@
           <% @order.order_details.each do |od| %>
           <tr>
             <td><%= od.item.name %></td>
-            <td><%= od.item.price %></td>
+            <td><%= od.item.with_tax_price %></td>
             <td><%= od.amount %></td>
-            <td><%= od.item.price*od.amount %></td>
+            <td><%= od.item.with_tax_price*od.amount %></td>
           </tr>
           <% end %>
         </tbody>

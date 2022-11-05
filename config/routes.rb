@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get'about' => 'public/homes#about'
   get'customers/my_page' => 'public/customers#show',as: :customer
   get'customers/information/edit' => 'public/customers#edit',as: :edit_customer
-  patch 'customers/information' => 'public/customers#edit',as: :update_customer
+  patch 'customers/information' => 'public/customers#update',as: :update_customer
   get'customers/unsubscribe' => 'public/customers#subscribe',as: :subscribe_customer
   patch 'customers/withdrawal' => 'public/customers#withdrawal',as: :withdrawal_customer
   delete'cart_items/destroy_all' => 'public/cart_items#destroy_all'

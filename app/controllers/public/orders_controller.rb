@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    
+
   end
 
   def show
@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new
         order_detail.item_id = c.item_id
         order_detail.order_id = @order.id
-        order_detail.purchase_price = c.item.price
+        order_detail.purchase_price = c.item.with_tax_price
         order_detail.amount = c.amount
         order_detail.save
       end

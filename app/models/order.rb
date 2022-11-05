@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   #credit_card:クレジットカード,transfer:銀行振込
   enum payment_method: {
     credit_card: 0,
-    transfer: 1
+    transfar: 1
   }
 
   enum is_active: {
